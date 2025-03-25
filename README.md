@@ -15,13 +15,13 @@ For specifying the database connection string, use the following environment var
 * `PG_USER`: the user of the database (default: `postgres`)
 * `PG_PASSWORD`: the password of the database (default: empty password - `""`)
 
-## What app do:
+## What the app does:
 
 ### Update test
 
-1. Create a table in the database if it does not exist `update_data`
-2. Insert a row with the value `0` in the column `value` and the name `update_test` in the column `name` if record not exists
-3. Invoke sql in the loop:
+1. Creates a table in the database if it does not exist `update_data`
+2. Inserts a row with the value `0` in the column `value` and the name `update_test` in the column `name` if record not exists
+3. Invokes sql in the loop:
    ```sql
    begin;
    update update_data set value = value + 1 where name = 'update_test'`;
@@ -30,8 +30,8 @@ For specifying the database connection string, use the following environment var
 
 ### Insert test
 
-1. Create a table in the database if it does not exist `insert_data`
-2. Invoke sql in the loop in one transaction:
+1. Creates a table in the database if it does not exist `insert_data`
+2. Invokes sql in the loop in one transaction:
    ```sql
    begin;
    insert into insert_data (name, value) values ('insert_test_$NUM', '$insert_test_$NUM');
