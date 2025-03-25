@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbtest
+  labels:
+    app: dbtest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dbtest
+  template:
+    metadata:
+      labels:
+        app: dbtest
+    spec:
+      containers:
+        - name: app
+          image: turchenkoalex/dbtest:main
+          imagePullPolicy: Always
+          env:
+          - name: PG_HOST
+            value: localhost
+          - name: PG_PORT
+            value: test
+          - name: PG_USER
+            value: postgres
+          - name: PG_PASSWORD
+            value: ""
+
+
+
